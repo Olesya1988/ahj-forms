@@ -5,9 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { sources } = require('webpack');
 
 module.exports = {
-  devServer: {
-    port: 9000,
-  },
+  // devServer: {
+  //   port: 9000,
+  // },
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
