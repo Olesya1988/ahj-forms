@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode production",
-    "lint": "eslint .",
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "lint": "eslint . --fix",
     "test": "jest",
     "coverage": "jest --coverage",
-    "e2e": "jest --testPathPattern=./e2e/ --runInBand",
     "preshow:coverage": "npm run coverage",
     "show:coverage": "live-server coverage/lcov-report",
     "preshow:dist": "npm run build",
-    "show:dist": "live-server dist"
+    "show:dist": "live-server dist",
+    "deploy": "gh-pages -d build",
+    "e2e": "jest --testPathPattern=./e2e/ --runInBand"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "babel-jest": "^29.5.0",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.0",
     "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
