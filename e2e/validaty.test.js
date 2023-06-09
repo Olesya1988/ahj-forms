@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import { fork } from 'child_process';
 
 jest.setTimeout(30000);
 
@@ -30,13 +31,13 @@ describe('Tooltip Form', () => {
   });
 
   test('Form should render on page start', async () => {
-    await page.goto('http://localhost:9000');
+    await page.goto('http://localhost:9001');
 
     await page.waitForTimeout('.widget');
   });
 
   test('Should add .tooltip class if btn is mouseover', async () => {
-    await page.goto('http://localhost:9000');
+    await page.goto('http://localhost:9001');
 
     await page.waitForTimeout('.widget');
 
