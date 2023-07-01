@@ -1,34 +1,28 @@
+import Draw from './Draw';
+
 export default class Tooltip {
-  constructor() {
-    this.title = 'Popover title';
-    this.message = 'And here\'s some amazing content. It\'s very engaging. Right?';
+  constructor(container) {
+    this.container = container;
+    this.draw = new Draw(this.container);
   }
 
-  showTooltip(element) {
-    const tooltipElement = document.createElement('div');
-
-    tooltipElement.classList.add('tooltip');
-
-    document.body.appendChild(tooltipElement);
-
-    const tooltipTitle = document.createElement('div');
-    tooltipTitle.classList.add('tooltip-title');
-    tooltipTitle.textContent = this.title;
-    tooltipElement.appendChild(tooltipTitle);
-
-    const tooltipMessage = document.createElement('div');
-    tooltipMessage.classList.add('tooltip-message');
-    tooltipMessage.textContent = this.message;
-    tooltipElement.appendChild(tooltipMessage);
-
-    const { left, top } = element.getBoundingClientRect();
-
-    tooltipElement.style.left = `${left + (element.offsetWidth / 2) - (tooltipElement.offsetWidth / 2)}px`;
-    tooltipElement.style.top = `${top - 90}px`;
+  init() {
+    this.draw.drawUI();
+    this.draw.drawTooltip();
+    this.bindToDOM();
   }
 
-  // eslint-disable-next-line
-  removeTooltip() {
-    document.querySelector('.tooltip').remove();
+  bindToDOM() {
+    document.addEventListener('mouseover', this.mouseover.bind(this));
+  }
+
+  mouseover(e) {
+    const { target } = e;
+
+    if (target.classList.contains('btn')) {
+      this.draw.showTooltip();
+    } else {
+      this.draw.closeTooltip();
+    }
   }
 }

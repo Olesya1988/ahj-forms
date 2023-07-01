@@ -1,5 +1,7 @@
-import buildWidget from './buildWidget';
-import tooltipController from './tooltipController';
+import Tooltip from './Tooltip';
 
-buildWidget();
-tooltipController();
+const root = document.getElementById('root');
+
+const app = new Tooltip(root);
+
+app.init();
