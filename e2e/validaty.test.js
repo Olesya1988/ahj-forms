@@ -33,13 +33,13 @@ describe('Tooltip Form', () => {
   test('Form should render on page start', async () => {
     await page.goto('http://localhost:9001');
 
-    await page.waitForTimeout('.widget');
+    await page.waitForTimeout('.root');
   });
 
   test('Should add .tooltip class if btn is mouseover', async () => {
     await page.goto('http://localhost:9001');
 
-    await page.waitForTimeout('.widget');
+    await page.waitForTimeout('.root');
 
     const form = await page.$('.widget-form');
     const btn = await form.$('.btn');
